@@ -15,11 +15,16 @@ from django.forms.forms import pretty_name
 from django.utils.html import format_html
 from django.utils.encoding import force_str, force_text
 from django.utils import six
+<<<<<<< HEAD
 from django.template import Library
 import hvad.models
 
 register = Library()
 
+=======
+import hvad.models
+
+>>>>>>> e78e9e8a368390e6d8f84ecd8f453e62f4e15a4f
 def label_for_field(name, model, model_admin=None, return_attr=False):
     """
     Returns a sensible label for a field name. The name can be a callable,
