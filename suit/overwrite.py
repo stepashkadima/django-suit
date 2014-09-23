@@ -1,6 +1,6 @@
 """
 Rewrite base django admin functions to enable integration with hvad translation.
-Rewrited lines 30-35
+Rewrited code for getting field in 'label_for_field'
 """
 from __future__ import unicode_literals
 
@@ -17,6 +17,7 @@ from django.utils.encoding import force_str, force_text
 from django.utils import six
 from django.template import Library
 import hvad.models
+from hvad.exceptions import WrongManager
 
 register = Library()
 
@@ -32,10 +33,10 @@ def label_for_field(name, model, model_admin=None, return_attr=False):
     attr = None
     try:
         # REWRITE:
-        if isinstance(model, hvad.models.TranslatableModelBase):
-            field = model._meta.translations_model._meta.get_field_by_name(name)[0]
-        else:
+        try:
             field = model._meta.get_field_by_name(name)[0]
+        except WrongManager:
+            field = model._meta.translations_model._meta.get_field_by_name(name)[0]
         # REWRITE:
         if isinstance(field, RelatedObject):
             label = field.opts.verbose_name
