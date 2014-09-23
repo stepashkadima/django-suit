@@ -4,7 +4,7 @@ from django import template
 from django.template import Context
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
-from django.contrib.admin.templatetags.admin_list import result_list
+from suit.overwrite import result_list
 from django.contrib.admin.views.main import ALL_VAR, PAGE_VAR
 from django.utils.html import escape
 
