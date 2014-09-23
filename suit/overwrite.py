@@ -16,8 +16,9 @@ from django.utils.html import format_html
 from django.utils.encoding import force_str, force_text
 from django.utils import six
 from django.template import Library
-import hvad.models
 from hvad.exceptions import WrongManager
+from django.contrib.admin.templatetags.admin_list import results
+
 
 register = Library()
 
